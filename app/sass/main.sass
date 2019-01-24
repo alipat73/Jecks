@@ -170,7 +170,7 @@ a
 	margin-bottom: $gutter
 
 .container-fluid
-	max-width: 1346px
+	max-width: 1200px
 	padding: 0 $gutter
 
 section
@@ -230,6 +230,13 @@ section
 		.overlay	
 			&::before
 				opacity: 0.75
+
+/* модификация паттерна для убирания рамки*/
+/* класс через конкатенацию не срабатывает */  
+.pattern-cat-header
+	&::before
+		display: none 
+
 
 /* затемнение картинки */
 .overlay
@@ -455,9 +462,8 @@ section
 			&:hover
 				a
 					color: $accent
-
-.pattern
-	margin-bottom: $gutter
+	.pattern
+		margin-bottom: $gutter
 	
 .item-title-white
 	.date
@@ -476,99 +482,272 @@ section
 
 /* кнопки*/
 .button
-  display: inline-block
-  border: none
-  color: #ffffff
-  text-decoration: none
-  background-color: $accent
-  padding: 12px 40px
-  font-size: 14px
-  text-transform: uppercase
-  font-weight: 600
-  border-radius: 10em
-  text-align: center
-  position: relative
-  outline: none
-  cursor: pointer
-  transition: background-color .1s  ease
-  &:hover, &:focus
-    text-decoration: none
-    color: #ffffff
-  &:hover
-    background-color: lighten($accent, 5%)
-  &:active
-    background-color: darken($accent, 5%)
+	display: inline-block
+	border: none
+	color: #ffffff
+	text-decoration: none
+	background-color: $accent
+	padding: 12px 40px
+	font-size: 14px
+	text-transform: uppercase
+	font-weight: 600
+	border-radius: 10em
+	text-align: center
+	position: relative
+	outline: none
+	cursor: pointer
+	transition: background-color .1s  ease
+	&:hover, &:focus
+		text-decoration: none
+		color: #ffffff
+	&:hover
+		background-color: lighten($accent, 5%)
+	&:active
+		background-color: darken($accent, 5%)
 
 .s_more
-  padding: $gutter*2 0
-  background-color: #f5f5f5
+	padding: $gutter*2 0
+	background-color: #f5f5f5
 
 /* footer*/
 .main-footer
-  background-color: $dark-blue
-  padding: 25px 0px
-  border-bottom: 1px solid rgba(#fff, .1)  
+	background-color: $dark-blue
+	padding: 25px 0px
+	border-bottom: 1px solid rgba(#fff, .1)  
 
 
 .bottom-futer
-  background-color: $dark-blue
-  padding: 25px 0px 35px
-  .logo
-    display: inline-block
-  p
-    color: rgba(#fff, .2)
-    font-size: 12px
-    margin: 5px
-  .footer-copy
-    color: rgba(#fff, .45)
-    font-size: 13px
-    font-family: baron-g, sans-serif
+	background-color: $dark-blue
+	padding: 25px 0px 35px
+	.logo
+		display: inline-block
+	p
+		color: rgba(#fff, .2)
+		font-size: 12px
+		margin: 5px
+	.footer-copy
+		color: rgba(#fff, .45)
+		font-size: 13px
+		font-family: baron-g, sans-serif
 
 .footer-menu
-  li  
-    &.active
-      text-decoration: underline
-      background: none
-      a  
-        background: none
-  a
-    font-size: 15px
-    padding: 0 10px
-    &:hover
-      text-decoration: underline
-      background: none
+	li  
+		&.active
+			text-decoration: underline
+			background: none
+			a  
+				background: none
+	a
+		font-size: 15px
+		padding: 0 10px
+		&:hover
+			text-decoration: underline
+			background: none
 
 nav.soc
-  padding: 15px 0 20px
-  ul, li
-    margin: 0
-    padding: 0
-    list-style-type: none
-    text-align: center
-  li
-    display: inline-block
-    a
-      display: block
-      text-align: center
-      border: 1px solid rgba(#fff, .1)
-      border-radius: 10em
-      width: 52px
-      height: 52px
-      line-height: 50px
-      color: #ffffff
-      font-size: 24px
-      margin: 4px
-      transition: border-color .25s ease, opacity .25s ease
-      .fa
-        transition: opacity .25s ease
-        opacity: .75
-      &:hover
-        border-color: rgba(#fff, .35)
-        .fa
-          opacity: 1
+	padding: 15px 0 20px
+	ul, li
+		margin: 0
+		padding: 0
+		list-style-type: none
+		text-align: center
+	li
+		display: inline-block
+		a
+			display: block
+			text-align: center
+			border: 1px solid rgba(#fff, .1)
+			border-radius: 10em
+			width: 52px
+			height: 52px
+			line-height: 50px
+			color: #ffffff
+			font-size: 24px
+			margin: 4px
+			transition: border-color .25s ease, opacity .25s ease
+			.fa
+				transition: opacity .25s ease
+				opacity: .75
+			&:hover
+				border-color: rgba(#fff, .35)
+				.fa
+					opacity: 1
 
 .logo-footer
-  span
-    color: $accent
+	span
+		color: $accent
+
+/* category.html */
+.cat-header
+	background-size: cover
+	background-position: center
+	position: relative
+	&::before
+		content: ""
+		opacity: .25
+		background-color: #000000
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+	&-block
+		position: relative
+		padding: 100px 80px 100px
+		color: #ffffff
+		background-color: rgba($dark, .8)
+		&::before
+			content: ""
+			opacity: .2
+			transition: opacity .25 ease, top .25s ease, left .25s ease, bottom .25 ease, right .25s ease
+			z-index: 1
+			position: absolute
+			border: 1px solid #ffffff
+			top: 10px
+			right: 10px
+			bottom: 10px
+			left: 10px
+		p, h1, h2
+			margin: 0
+		h1, h2
+			font-size: 30px
+			text-transform: uppercase
+			margin-bottom: 15px
+			
+	&.overlay
+		&:hover
+			&::before
+				opacity: .25
+
+/*section*/	
+/* cat-list-first */
+.cat-list-first
+	padding-top: $gutter
+	background-color: #f5f5f5
+
+type-one-cat
+	background-color: transparent
+	padding: 0px
+
+.cat-list
+	padding-top: $gutter
+	background-color: #ffffff		
+
+a.cat-list-item
+	color: $text-color
+	display: block
+	text-decoration: none	
+	margin-bottom: $gutter/1.5
+	margin-top: $gutter/1.5
+	padding-bottom: 4px
+	border-bottom: 1px solid #dfdfdf
+	h2, h3
+		transition: color .25s ease
+		line-height: 1.2
+		font-size: 21px
+		font-weight: 800
+		margin: 0
+	img
+		transition: opacity .25s ease
+		margin-bottom: 12px
+	p
+		font-size: 15.5px
+		margin-top: 10px
+	.date
+		margin-top: 5px
+	&:hover
+		.pattern
+			&:before
+				top: 10px
+				right: 10px
+				bottom: 10px
+				left: 10px
+				opacity: .2
+				z-index: 10
+			img
+				opacity: .75
+		h2, h3
+			text-decoration: underline
+			color: $accent
+		p
+			color: $text-color
+	&:last-child
+		border-bottom: none
+
+/*main-aside*/		
+.main-aside
+	margin-bottom: $gutter
+
+/* latest-box */
+
+.lb-header
+	border-bottom: 2px solid $accent
+	padding-bottom: 5px
+
+.lb-header, .all-posts-header
+	font-weight: 800
+	margin: 0
+	text-align: left	
+
+.lb-item
+	position: relative
+	padding-left: 120px
+	background-color: #f0f0f0
+	margin-bottom: 2px
+	transition: background-color .25 ease
+	text-align: left
+	&:hover
+		background-color: $accent
+		.lb-cat-name
+			color: #ffffff
+	&-header
+		font-size: 14px
+		line-height: 1.4
+		display: block
+		font-weight: 500
+	.date
+		display: inline-block
+		margin-left: 20px
+		margin-top: 0
+		color: #aaaaaa
+	.item-comments
+		.fa
+			font-size: 12px
+			color: #aaaaaa
+		.item-comments-count
+			color: #aaaaaa
+			&:hover
+				color: $accent
+				&::after
+					color: #aaaaaa
+
+.lb-body
+	background-color: #f9f9f9
+	padding: 10px 15px
+	a
+		color: $text-color
+		transition: color .25s ease
+		&:hover
+			color: $accent
+
+.lb-catname
+	position: absolute
+	left: 15px
+	top: 15px
+	color: #888888
+	font-size: 14px
+	font-weight: 800
+	max-width: 90px
+	transition: color .25s ease
+	text-decoration: none
+	&:hover
+		text-decoration: underline
+		color: #ffffff
+	&:focus
+		color: #888888	
+
+.lb-footer
+	line-height: 1.2
+	
 
 @import "media" // Always at the end
